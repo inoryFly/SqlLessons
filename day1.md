@@ -46,3 +46,12 @@
 ```
 第一列如果没有设置主键自增（PRINARY KEY AUTO_INCREMENT）的话添加第一列数据比较容易错乱，要不断的查询表看数据。
 如果添加过主键自增（PRINARY KEY AUTO_INCREMENT）第一列在增加数据的时候，可以写为0或者null，这样添加数据可以自增， 从而可以添加全部数据，而不用特意规定那几列添加数据。
+
+# 4.查询语句
+
+```bash
+    #基础查询
+    select column_age,column_name from table_name
+    #加入where
+    select column_age from table_name where column_age>10
+```
