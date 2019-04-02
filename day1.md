@@ -55,3 +55,13 @@
     #加入where
     select column_age from table_name where column_age>10
 ```
+
+# 5.数据更新/删除
+
+```bash
+    #修改数据,更新数据表中指定行的数据时，where很有用,不加的时候更新所有数据的对应字段
+    update table_name set field1=new-value1,field2=new-value2 [where clause]
+    #删除数据，同上，不添加where语句时，删除表中所有数据
+    delete from table_name [where clause]
+```
+
