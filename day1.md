@@ -64,4 +64,10 @@
     #删除数据，同上，不添加where语句时，删除表中所有数据
     delete from table_name [where clause]
 ```
+# 6.模糊查询
 
+```bash
+    #like字句使用'%'表示任意字符，如果没用，则跟'='效果一样
+    #通常情况下，‘%’与like一同使用
+    selct field from table_name where fieldn like condition
+```
