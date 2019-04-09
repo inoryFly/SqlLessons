@@ -76,13 +76,19 @@
 # 7.UNION操作字符
 
 ```sql
-    select expression from table_name [where conditions] union [ALL | DISTINCT] select expression from table_name [where conditions]
+    select expression from tables [where conditions] union [ALL | DISTINCT] select expression from tables [where conditions]
 ```
 - expression:要检索的列
 - tables：要检索的数据表
 - where conditions:可选，检索条件
 - DISTINCT: 可选，删除结果集合中重复的数据。默认情况下UNION操作符已经删除了重复数据.
 - ALL：可选，返回所有结果集，包含重复数据
+- 请注意，UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT 语句中的列的顺序必须相同。
+
+```sql
+    selct * from sc_order_dismantle union select * from (select * from sc_order_merge) s;
+    /* union 后面的为子查询，将(...)里面的查询结果作为新表，并且命名为 s,如果没有重命名，则前面一个将会找不到表而报错*/
+```
 
 # 8.排序
 ```sql
