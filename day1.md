@@ -76,10 +76,20 @@
 # 7.UNION操作字符
 
 ```sql
-    select expression from tables [where conditions] union [ALL | DISTINCT] select expression from tables [where conditions]
+    select expression from table_name [where conditions] union [ALL | DISTINCT] select expression from table_name [where conditions]
 ```
 - expression:要检索的列
 - tables：要检索的数据表
 - where conditions:可选，检索条件
 - DISTINCT: 可选，删除结果集合中重复的数据。默认情况下UNION操作符已经删除了重复数据.
 - ALL：可选，返回所有结果集，包含重复数据
+
+# 8.排序
+```sql
+    select field1,... table_name1,table_name2...
+    order by field1,[field2...] [ASC [DESC]]
+```
+- 可以使用任何字段来作为排序的条件，从而返回排序后的查询结果。
+- 可以设定多个字段来排序。
+- 可以使用asc或desc关键字来设置查询结果是按升序或降序排列。默认情况下，他是按升序排列
+- 可以添加<strong>where .. like </strong>字句来设置条件。
