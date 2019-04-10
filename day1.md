@@ -99,3 +99,16 @@
 - 可以设定多个字段来排序。
 - 可以使用asc或desc关键字来设置查询结果是按升序或降序排列。默认情况下，他是按升序排列
 - 可以添加<strong>where .. like </strong>字句来设置条件。
+
+# 9.分组
+```sql
+    select column_name,function(column_name) from table_name
+    [where conditions] group by column_name
+```
+group by 根据一个或多个列队结果进行分组。
+在分组的列上我们可以使用count,sum,avg等函数。
+
+```sql
+    /*从表sc_station_classshift中根据站点id分组，并且同计每组记录的数量然后过滤出数量大于6条的分组*/
+    SELECT stationid,COUNT(*) AS reocrds_number FROM sc_station_classshift GROUP BY stationid HAVING reocrds_number>6
+```
