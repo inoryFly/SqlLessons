@@ -85,6 +85,7 @@
 - ALL：可选，返回所有结果集，包含重复数据
 - 请注意，UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT 语句中的列的顺序必须相同。
 
+例子：
 ```sql
     selct * from sc_order_dismantle union select * from (select * from sc_order_merge) s;
     /* union 后面的为子查询，将(...)里面的查询结果作为新表，并且命名为 s,如果没有重命名，则前面一个将会找不到表而报错*/
@@ -108,7 +109,16 @@
 group by 根据一个或多个列队结果进行分组。
 在分组的列上我们可以使用count,sum,avg等函数。
 
+例子：
 ```sql
     /*从表sc_station_classshift中根据站点id分组，并且同计每组记录的数量然后过滤出数量大于6条的分组*/
     SELECT stationid,COUNT(*) AS reocrds_number FROM sc_station_classshift GROUP BY stationid HAVING reocrds_number>6
 ```
+
+# 10.连接
+```sql
+    select column_name... from table_name1 as newname1 [inner | left | right] join table_name2 as newname2 on [conditions] 
+```
+- inner join(内连接，或等值连接)：获取两个表中字段匹配的记录
+- left join(左连接)： 获取左表所有记录，即使右表没有对应匹配的记录
+- right join(右连接)：与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录。
