@@ -122,3 +122,18 @@ group by 根据一个或多个列队结果进行分组。
 - inner join(内连接，或等值连接)：获取两个表中字段匹配的记录
 - left join(左连接)： 获取左表所有记录，即使右表没有对应匹配的记录
 - right join(右连接)：与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录。
+
+# 11.NULL值处理
+```sql
+    select *,column_name1+ifnull(column_name2,0) from table_name;
+    /*columnName1，columnName2 为 int 型，当 columnName2 中，有值为 null 时，columnName1+columnName2=null， ifnull(columnName2,0) 把 columnName2 中 null 值转为 0。*/
+```
+- is null:当列的值是null，此时返回true
+- is not null:当列的值不为null，运算返回true
+- <=>:比较操作符：当比较的两个值为NULL时返回true
+例子：
+```sql
+    select handle_give from sc_order where handle_give is not null; --查询handle_give列不为空的数据，如果使用 handel_give != null的话是不会生效的
+    select orderno,handle_give+ifnull(paymoney,0) s from sc_order;-- 查询orderno,并且将hande_give与paymoney列的值相加作为新的列s输出
+```
+疑问：这种加法只适合数字间相加，其它的相加虽然不会报错，但是值不对。
